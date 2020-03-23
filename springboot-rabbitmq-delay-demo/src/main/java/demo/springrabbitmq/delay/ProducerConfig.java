@@ -54,6 +54,8 @@ public class ProducerConfig {
         Map<String, Object> args = new HashMap<>(2);
         args.put(DEAD_LETTER_QUEUE_KEY, deadExchangeName);
         args.put(DEAD_LETTER_ROUTING_KEY, deadRoutingKey);
+        //x-dead-letter-exchange代表消息过期后，消息要进入的交换机，这里配置的是dead_exchange，也就是死信交换机，
+        // x-dead-letter-routing-key是配置消息过期后，进入死信交换机的dead_routing_key,跟发送消息的routing-key一个道理，根据这个key将消息放入不同的队列
         // 设置消息的过期时间， 单位是毫秒
         args.put("x-message-ttl", 3000);
         // 是否持久化
